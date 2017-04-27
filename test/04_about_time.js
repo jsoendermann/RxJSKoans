@@ -118,7 +118,7 @@ asyncTest('buffering', function () {
     events.onNext('s');
 
     setTimeout(function () {
-      equal(__, received.join(' '));
+      equal('RxJS Rocks', received.join(' '));
       start();
     }, 120);
   }, 120);
@@ -141,7 +141,7 @@ asyncTest('time between calls', function () {
     setTimeout(function () {
       events.onNext('down');
 
-      equal(__, received.join(' '));
+      equal('slow down', received.join(' '));
       start();
     }, 120);
   }, 120);
@@ -155,7 +155,7 @@ asyncTest('results can be ambiguous timing', function () {
   fst.amb(snd).subscribe(function (x) { results = x; });
 
   setTimeout(function () {
-    equal(results, __);
+    equal(results, -1);
     start();
   }, 600);
 });
